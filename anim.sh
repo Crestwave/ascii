@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-trap "printf '\e[?25h'" EXIT
+trap "printf '\e[?25h'; exit 0" EXIT
 printf '\e[?25l;\e[2J'
 
 for i in "$1"/*; do
