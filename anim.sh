@@ -1,7 +1,10 @@
-#!/bin/sh
+#!/usr/bin/env bash
+trap "printf '\e[?25h'" EXIT
+printf '\e[?25l;\e[2J'
+
 for i in "$1"/*; do
-	clear
+	printf '\e[H'
 	printf '%s %s\n' "$1" "${i##*/}"
-	cat "$i"
-	sleep 1
+	printf '%s\n' "$(< $i)"
+	read -rt 1
 done
